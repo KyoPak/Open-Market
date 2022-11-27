@@ -7,7 +7,7 @@
 
 import UIKit
 
-final class ListCollectionViewCell: UICollectionViewCell {
+final class ListCollectionViewCell: UICollectionViewListCell {
     private var discountPrice: Double = 0.0
     
     override init(frame: CGRect) {
@@ -108,6 +108,8 @@ final class ListCollectionViewCell: UICollectionViewCell {
     }
     
     func setupData(with productData: Product) {
+        
+        
         discountPrice = productData.discountedPrice
         
         productNameLabel.text = productData.name

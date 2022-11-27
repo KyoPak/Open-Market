@@ -7,6 +7,15 @@
 import UIKit
 
 final class MainViewController: UIViewController {
+    enum Section {
+        case main
+    }
+    
+    typealias DataSource = UICollectionViewDiffableDataSource<Section, Product>
+    typealias Snapshot = NSDiffableDataSourceSnapshot<Section, Product>
+    
+    private lazy var dataSource = makeDataSource()
+    
     let networkManager = NetworkManager()
     let mainView = MainView()
     var productData: [Product] = []
@@ -17,8 +26,6 @@ final class MainViewController: UIViewController {
         setupNavigationBar()
         setupSegmentedControlTarget()
         setupData()
-        mainView.collectionView.delegate = self
-        mainView.collectionView.dataSource = self
     }
     
     private func setupData() {
@@ -30,14 +37,93 @@ final class MainViewController: UIViewController {
             switch result {
             case .success(let data):
                 self.productData = data.pages
-                
                 DispatchQueue.main.async {
-                    self.mainView.collectionView.reloadData()
+                    self.applySnapshot(animatingDifferences: false)
+                    //self.mainView.collectionView.reloadData()
                 }
             case .failure(let error):
                 print(error.description)
             }
         }
+    }
+}
+
+// MARK: - Diffable DataSource, Snapshot
+extension MainViewController {
+
+    private func makeDataSource() -> DataSource {
+        setupData()
+        
+        switch mainView.layoutStatus {
+        case .list:
+            let dataSource = DataSource(
+                collectionView: mainView.collectionView) { collectionView, indexPath, product in
+                    guard let cell = collectionView.dequeueReusableCell(
+                        withReuseIdentifier: ListCollectionViewCell.reuseIdentifier,
+                        for: indexPath) as? ListCollectionViewCell else {
+                        let errorCell = UICollectionViewCell()
+                        return errorCell
+                    }
+                    
+                    cell.indicatorView.startAnimating()
+                    cell.setupData(with: product)
+                    
+                    let cacheKey = NSString(string: product.thumbnail)
+                    if let cachedImage = ImageCacheManager.shared.object(forKey: cacheKey) {
+                        cell.uploadImage(cachedImage)
+                        return cell
+                    }
+                    
+                    self.networkManager.fetchImage(with: product.thumbnail) { image in
+                        DispatchQueue.main.async {
+                            if indexPath == collectionView.indexPath(for: cell) {
+                                ImageCacheManager.shared.setObject(image, forKey: cacheKey)
+                                cell.uploadImage(image)
+                            }
+                        }
+                    }
+                    return cell
+                }
+            return dataSource
+
+        case .grid:
+            let dataSource = DataSource(
+                collectionView: mainView.collectionView) { collectionView, indexPath, product in
+                    guard let cell = collectionView.dequeueReusableCell(
+                        withReuseIdentifier: GridCollectionViewCell.reuseIdentifier,
+                        for: indexPath) as? GridCollectionViewCell else {
+                        let errorCell = UICollectionViewCell()
+                        return errorCell
+                    }
+                    
+                    cell.indicatorView.startAnimating()
+                    cell.setupData(with: product)
+                    
+                    let cacheKey = NSString(string: product.thumbnail)
+                    if let cachedImage = ImageCacheManager.shared.object(forKey: cacheKey) {
+                        cell.uploadImage(cachedImage)
+                        return cell
+                    }
+                    
+                    self.networkManager.fetchImage(with: product.thumbnail) { image in
+                        DispatchQueue.main.async {
+                            if indexPath == collectionView.indexPath(for: cell) {
+                                ImageCacheManager.shared.setObject(image, forKey: cacheKey)
+                                cell.uploadImage(image)
+                            }
+                        }
+                    }
+                    return cell
+                }
+            return dataSource
+        }
+    }
+
+    private func applySnapshot(animatingDifferences: Bool = true) {
+        var snapshot = Snapshot()
+        snapshot.appendSections([.main])
+        snapshot.appendItems(productData)
+        dataSource.apply(snapshot, animatingDifferences: animatingDifferences)
     }
 }
 
@@ -70,85 +156,13 @@ extension MainViewController {
     
     @objc func segmentedControlValueChanged(sender: UISegmentedControl) {
         if sender.selectedSegmentIndex == 0 {
+            
             mainView.layoutStatus = .list
+            self.dataSource = makeDataSource()
         } else {
+            
             mainView.layoutStatus = .grid
-        }
-    }
-}
-
-// MARK: - Extension UICollectionView
-extension MainViewController: UICollectionViewDelegate {
-    
-}
-
-extension MainViewController: UICollectionViewDataSource {
-    func collectionView(_ collectionView: UICollectionView,
-                        numberOfItemsInSection section: Int) -> Int {
-        return productData.count
-    }
-    
-    func collectionView(_ collectionView: UICollectionView,
-                        cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        switch mainView.layoutStatus {
-        case .list:
-            guard let cell = collectionView.dequeueReusableCell(
-                withReuseIdentifier: ListCollectionViewCell.reuseIdentifier,
-                for: indexPath) as? ListCollectionViewCell
-            else {
-                let errorCell = UICollectionViewCell()
-                return errorCell
-            }
-            
-            cell.indicatorView.startAnimating()
-            
-            let data = self.productData[indexPath.item]
-            cell.setupData(with: data)
-            
-            let cacheKey = NSString(string: data.thumbnail)
-            if let cachedImage = ImageCacheManager.shared.object(forKey: cacheKey) {
-                cell.uploadImage(cachedImage)
-                return cell
-            }
-            
-            networkManager.fetchImage(with: data.thumbnail) { image in
-                DispatchQueue.main.async {
-                    if indexPath == collectionView.indexPath(for: cell) {
-                        ImageCacheManager.shared.setObject(image, forKey: cacheKey)
-                        cell.uploadImage(image)
-                    }
-                }
-            }
-            return cell
-        case .grid:
-            guard let cell = collectionView.dequeueReusableCell(
-                withReuseIdentifier: GridCollectionViewCell.reuseIdentifier,
-                for: indexPath) as? GridCollectionViewCell
-            else {
-                let errorCell = UICollectionViewCell()
-                return errorCell
-            }
-            
-            cell.indicatorView.startAnimating()
-            
-            let data = self.productData[indexPath.item]
-            cell.setupData(with: data)
-            
-            let cacheKey = NSString(string: data.thumbnail)
-            if let cachedImage = ImageCacheManager.shared.object(forKey: cacheKey) {
-                cell.uploadImage(cachedImage)
-                return cell
-            }
-            
-            networkManager.fetchImage(with: data.thumbnail) { image in
-                DispatchQueue.main.async {
-                    if indexPath == collectionView.indexPath(for: cell) {
-                        ImageCacheManager.shared.setObject(image, forKey: cacheKey)
-                        cell.uploadImage(image)
-                    }
-                }
-            }
-            return cell
+            self.dataSource = makeDataSource()
         }
     }
 }
