@@ -16,7 +16,7 @@ final class MainViewController: UIViewController {
     
     private enum Constant: Int {
         case pageNumberUnit = 1
-        case itemsPerPage = 10
+        case itemsPerPage = 15
     }
     
     private enum ScrollState {

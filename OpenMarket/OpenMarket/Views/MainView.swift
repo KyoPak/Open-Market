@@ -15,7 +15,7 @@ enum CollectionStatus: Int {
 final class MainView: UIView {
     var layoutStatus: CollectionStatus = .list {
         didSet {
-            changeLayout()
+            collectionView.collectionViewLayout = changeCompositionalLayout(layoutStatus: layoutStatus)
             scrollViewTop()
             collectionView.reloadData()
         }
@@ -47,47 +47,50 @@ final class MainView: UIView {
         return control
     }()
     
-    private let listLayout: UICollectionViewFlowLayout = {
-        let layout = UICollectionViewFlowLayout()
-        layout.scrollDirection = .vertical
-        layout.minimumLineSpacing = 0
-        let collectionCellWidth = UIScreen.main.bounds.width
-        let collectionCellHeight = UIScreen.main.bounds.height / 11
-        layout.itemSize  = CGSize(width: collectionCellWidth, height: collectionCellHeight)
-        return layout
-    }()
-    
-    private let gridLayout: UICollectionViewFlowLayout = {
-        let layout = UICollectionViewFlowLayout()
-        layout.scrollDirection = .vertical
-        layout.minimumLineSpacing = 10
-        let collectionCellWidth = UIScreen.main.bounds.width / 2 - 15
-        let collectionCellHeight = UIScreen.main.bounds.height / 3
-        layout.itemSize  = CGSize(width: collectionCellWidth, height: collectionCellHeight)
-        return layout
-    }()
-    
     lazy var collectionView: UICollectionView = {
         let collectionView = UICollectionView(frame: .zero,
-                                              collectionViewLayout: listLayout)
+                                              collectionViewLayout: changeCompositionalLayout(layoutStatus: .list))
         collectionView.translatesAutoresizingMaskIntoConstraints = false
         return collectionView
     }()
+    
+    private func changeCompositionalLayout(layoutStatus: CollectionStatus) -> UICollectionViewLayout {
+        let itemSize = NSCollectionLayoutSize(widthDimension: .fractionalWidth(1.0),
+                                              heightDimension: .fractionalHeight(1.0))
+        let item = NSCollectionLayoutItem(layoutSize: itemSize)
+        
+        switch layoutStatus {
+        case .list:
+            let groupSize = NSCollectionLayoutSize(widthDimension: .fractionalWidth(1.0),
+                                                   heightDimension: .fractionalHeight(1 / 11))
+            let group = NSCollectionLayoutGroup.vertical(layoutSize: groupSize, subitems: [item])
+            
+            let section = NSCollectionLayoutSection(group: group)
+            let layout = UICollectionViewCompositionalLayout(section: section)
+
+            return layout
+        case .grid:
+            let groupSize = NSCollectionLayoutSize(widthDimension: .fractionalWidth(1.0),
+                                                   heightDimension: .fractionalHeight(1 / 3))
+            let group = NSCollectionLayoutGroup.horizontal(layoutSize: groupSize,
+                                                           subitem: item,
+                                                           count: 2)
+            let spacing = CGFloat(10)
+            group.interItemSpacing = .fixed(spacing)
+            
+            let section = NSCollectionLayoutSection(group: group)
+            section.interGroupSpacing = 10
+            
+            let layout = UICollectionViewCompositionalLayout(section: section)
+            return layout
+        }
+    }
     
     private func registerCell() {
         collectionView.register(ListCollectionViewCell.self,
                                 forCellWithReuseIdentifier: ListCollectionViewCell.reuseIdentifier)
         collectionView.register(GridCollectionViewCell.self,
                                 forCellWithReuseIdentifier: GridCollectionViewCell.reuseIdentifier)
-    }
-    
-    private func changeLayout() {
-        switch layoutStatus {
-        case .list:
-            collectionView.collectionViewLayout = listLayout
-        case .grid:
-            collectionView.collectionViewLayout = gridLayout
-        }
     }
     
     private func scrollViewTop(){
