@@ -1,6 +1,7 @@
 # Open Market ReadME
 
-- Kyo와 LJ가 만든 Open Market App입니다.
+- Kyo와 LJ가 만든 Open Market App입니다
+- 12/14부터 개인적으로 Refactoring하며 완성도를 더욱 올려가고 있습니다.
 
 ## 목차
 1. [팀 소개](#팀-소개)
@@ -296,6 +297,12 @@ OpenMarket
 
 - Network
     - ✅ NetworkManager UPDATE, DELETE Method 구현 및 적용
+
+### 👟 Refactoring-ModernCollectionView
+- CollectionView
+    - ✅ 기존 CollectionView의 FlowLayout을 CompositionalLayout으로 변경 (2022.12.14)
+
+
 
 
 ## 기술적 도전
