@@ -13,6 +13,7 @@ enum NetworkError: Error {
     case unknown
     case data
     case networking
+    case last
     
     public var description: String {
         switch self {
@@ -26,6 +27,8 @@ enum NetworkError: Error {
             return "Data Error"
         case .networking:
             return "Networking Error"
+        case .last:
+            return "Last Data"
         }
     }
 }

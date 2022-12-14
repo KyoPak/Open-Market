@@ -30,6 +30,9 @@ struct DecodeManager<T: Decodable> {
     
     func decodeData(data: Data) -> Result<T, NetworkError> {
         guard let datas = try? decoder.decode(T.self, from: data) else {
+            if data.count == 0 {
+                return Result.failure(NetworkError.last)
+            }
             return Result.failure(NetworkError.decoding)
         }
         

@@ -46,7 +46,10 @@ final class MainViewController: UIViewController {
     }
     
     private func setupData() {
-        defer { pageCount += Constant.pageNumberUnit.rawValue }
+        defer {
+            pageCount += Constant.pageNumberUnit.rawValue
+            self.scrollState = .idle
+        }
         
         guard scrollState == .idle else { return }
         scrollState = .isLoading
@@ -61,12 +64,18 @@ final class MainViewController: UIViewController {
                 self.productData += data.pages
                 DispatchQueue.main.async {
                     self.mainView.collectionView.reloadData()
-                    self.scrollState = .idle
                 }
             case .failure(let error):
-                self.showAlert(alertText: error.description,
-                               alertMessage: "오류가 발생했습니다.",
-                               completion: nil)
+                DispatchQueue.main.async {
+                    if error == .last {
+                        self.showAlert(alertText: error.description,
+                                       alertMessage: "마지막 상품입니다.",
+                                       completion: nil)
+                    }
+                    self.showAlert(alertText: error.description,
+                                   alertMessage: "오류가 발생했습니다.",
+                                   completion: nil)
+                }
             }
         }
     }

@@ -69,6 +69,8 @@ extension AddViewController: ImageCollectionViewCellDelegate {
         let alert = UIAlertController(title: "사진선택",
                                       message: "업로드할 사진을 선택해주세요.",
                                       preferredStyle: .actionSheet)
+        
+        let cancelAction = UIAlertAction(title: "취소", style: .cancel)
         let leftAction = UIAlertAction(title: "원본사진", style: .default) { _ in
             self.picker.allowsEditing = false
             self.present(self.picker, animated: true, completion: nil)
@@ -81,7 +83,7 @@ extension AddViewController: ImageCollectionViewCellDelegate {
         
         alert.addAction(leftAction)
         alert.addAction(rightAction)
-        
+        alert.addAction(cancelAction)
         present(alert, animated: true, completion: nil)
     }
 }
