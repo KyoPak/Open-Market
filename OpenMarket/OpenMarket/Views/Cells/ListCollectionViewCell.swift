@@ -132,9 +132,7 @@ final class ListCollectionViewCell: UICollectionViewCell {
 // MARK: - Constraints
 extension ListCollectionViewCell {
     private func setupUI() {
-        contentView.layer.borderWidth = 1
-        contentView.layer.cornerRadius = 10
-        contentView.layer.borderColor = UIColor.gray.cgColor
+        contentView.layer.applyCustomBorder([.top], color: .gray, width: 1)
         setupView()
     }
     

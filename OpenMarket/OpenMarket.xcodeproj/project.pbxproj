@@ -18,6 +18,7 @@
 		3C21F1942941D7580037B7B2 /* DetailProductView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3C21F1932941D7580037B7B2 /* DetailProductView.swift */; };
 		3C21F1962942C95F0037B7B2 /* DetailProductCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3C21F1952942C95F0037B7B2 /* DetailProductCollectionViewCell.swift */; };
 		3C2A5B7F293B94A500BC6E3D /* UIImage+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3C2A5B7E293B94A500BC6E3D /* UIImage+Extension.swift */; };
+		3C333C202949C24200EE2C9D /* CALayer+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3C333C1F2949C24200EE2C9D /* CALayer+Extension.swift */; };
 		3C5518092938B431000FBE60 /* AddProductCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3C5518082938B431000FBE60 /* AddProductCollectionViewCell.swift */; };
 		3C84EB282924BE5200E667A3 /* URLSessionProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3C84EB272924BE5200E667A3 /* URLSessionProtocol.swift */; };
 		3C84EB2A2924BE9000E667A3 /* URLSessionDataTaskProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3C84EB292924BE9000E667A3 /* URLSessionDataTaskProtocol.swift */; };
@@ -76,6 +77,7 @@
 		3C21F1932941D7580037B7B2 /* DetailProductView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailProductView.swift; sourceTree = "<group>"; };
 		3C21F1952942C95F0037B7B2 /* DetailProductCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailProductCollectionViewCell.swift; sourceTree = "<group>"; };
 		3C2A5B7E293B94A500BC6E3D /* UIImage+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIImage+Extension.swift"; sourceTree = "<group>"; };
+		3C333C1F2949C24200EE2C9D /* CALayer+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "CALayer+Extension.swift"; sourceTree = "<group>"; };
 		3C5518082938B431000FBE60 /* AddProductCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddProductCollectionViewCell.swift; sourceTree = "<group>"; };
 		3C84EB272924BE5200E667A3 /* URLSessionProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = URLSessionProtocol.swift; sourceTree = "<group>"; };
 		3C84EB292924BE9000E667A3 /* URLSessionDataTaskProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = URLSessionDataTaskProtocol.swift; sourceTree = "<group>"; };
@@ -163,6 +165,7 @@
 				90D331B029247FD3001C2B46 /* Formatter+Extension.swift */,
 				3C093204292BE7EC00F96865 /* UILabel+Extension.swift */,
 				3C2A5B7E293B94A500BC6E3D /* UIImage+Extension.swift */,
+				3C333C1F2949C24200EE2C9D /* CALayer+Extension.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -467,6 +470,7 @@
 				3CA35E152922318D00C47E06 /* Product.swift in Sources */,
 				3C21F1962942C95F0037B7B2 /* DetailProductCollectionViewCell.swift in Sources */,
 				3C0931FE292B655D00F96865 /* ListCollectionViewCell.swift in Sources */,
+				3C333C202949C24200EE2C9D /* CALayer+Extension.swift in Sources */,
 				3C093203292B68C800F96865 /* ReuseIdentifierProtocol+Extension.swift in Sources */,
 				C70FB0FB25BEF61C00C9924E /* AppDelegate.swift in Sources */,
 				3CB07366293B7DA900881AE6 /* ProductViewController.swift in Sources */,
