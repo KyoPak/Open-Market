@@ -7,9 +7,7 @@
 
 import UIKit
 
-final class ListCollectionViewCell: UICollectionViewCell {
-    private var discountPrice: Double = 0.0
-    
+final class ListCollectionViewCell: MainCollectionViewCell {
     override init(frame: CGRect) {
         super.init(frame: frame)
         setupUI()
@@ -18,47 +16,6 @@ final class ListCollectionViewCell: UICollectionViewCell {
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
-    
-    let indicatorView: UIActivityIndicatorView = {
-        let activityIndicator = UIActivityIndicatorView(style: .medium)
-        activityIndicator.hidesWhenStopped = true
-        activityIndicator.translatesAutoresizingMaskIntoConstraints = false
-        return activityIndicator
-    }()
-    
-    private let productImageView: UIImageView = {
-        let imageView = UIImageView()
-        imageView.contentMode = .scaleToFill
-        imageView.translatesAutoresizingMaskIntoConstraints = false
-        return imageView
-    }()
-    
-    private let productNameLabel: UILabel = {
-        let label = UILabel()
-        label.font = UIFont.preferredFont(forTextStyle: .body)
-        label.translatesAutoresizingMaskIntoConstraints = false
-        return label
-    }()
-    
-    private let productPriceLabel: UILabel = {
-        let label = UILabel()
-        label.textColor = .gray
-        label.font = UIFont.systemFont(ofSize: 15)
-        return label
-    }()
-    
-    private let productSalePriceLabel: UILabel = {
-        let label = UILabel()
-        label.textColor = .gray
-        label.font = UIFont.systemFont(ofSize: 15)
-        return label
-    }()
-    
-    private let productStockLabel: UILabel = {
-        let label = UILabel()
-        label.textColor = .gray
-        return label
-    }()
     
     private let detailButton: UIButton = {
         let button = UIButton()
@@ -99,34 +56,6 @@ final class ListCollectionViewCell: UICollectionViewCell {
         stackView.translatesAutoresizingMaskIntoConstraints = false
         return stackView
     }()
-    
-    func uploadImage(_ image: UIImage) {
-        productImageView.image = image
-        indicatorView.stopAnimating()
-    }
-    
-    func setupData(with productData: Product) {
-        discountPrice = productData.discountedPrice
-        
-        productNameLabel.text = productData.name
-        productPriceLabel.text = String(productData.currencyPrice)
-        productSalePriceLabel.text = String(productData.currencyBargainPrice)
-        productStockLabel.text = productData.stockDescription
-        
-        setupStockLabelText()
-        setupPriceLabel()
-    }
-    
-    override func prepareForReuse() {
-        super.prepareForReuse()
-        clearPriceLabel()
-        
-        productImageView.image = nil
-        productNameLabel.text = nil
-        productPriceLabel.text = nil
-        productSalePriceLabel.text = nil
-        productStockLabel.text = nil
-    }
 }
 
 // MARK: - Constraints
@@ -144,33 +73,6 @@ extension ListCollectionViewCell {
         
         setupConstraints()
         setupIndicatorViewConstraints()
-    }
-    
-    private func setupStockLabelText() {
-        if productStockLabel.text == "품절" {
-            productStockLabel.textColor = .systemOrange
-        } else {
-            productStockLabel.textColor = .gray
-        }
-    }
-    
-    private func setupPriceLabel() {
-        if discountPrice == Double.zero {
-            productSalePriceLabel.isHidden = true
-        } else {
-            changePriceLabel()
-        }
-    }
-    
-    private func changePriceLabel() {
-        productPriceLabel.textColor = .red
-        productPriceLabel.applyStrikeThroughStyle()
-    }
-    
-    private func clearPriceLabel() {
-        productSalePriceLabel.isHidden = false
-        productPriceLabel.textColor = .gray
-        productPriceLabel.attributedText = .none
     }
     
     private func setupConstraints() {

@@ -7,60 +7,16 @@
 
 import UIKit
 
-final class GridCollectionViewCell: UICollectionViewCell {
-    private var discountPrice: Double = 0.0
-    
+final class GridCollectionViewCell: MainCollectionViewCell {
     override init(frame: CGRect) {
         super.init(frame: frame)
         setupUI()
+        setupUIComponent()
     }
     
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
-    
-    let indicatorView: UIActivityIndicatorView = {
-        let activityIndicator = UIActivityIndicatorView(style: .medium)
-        activityIndicator.hidesWhenStopped = true
-        activityIndicator.translatesAutoresizingMaskIntoConstraints = false
-        return activityIndicator
-    }()
-    
-    private let productImageView: UIImageView = {
-        let imageView = UIImageView()
-        imageView.contentMode = .scaleAspectFill
-        imageView.translatesAutoresizingMaskIntoConstraints = false
-        return imageView
-    }()
-    
-    private let productNameLabel: UILabel = {
-        let label = UILabel()
-        label.numberOfLines = 2
-        label.textAlignment = .center
-        label.font = UIFont.preferredFont(forTextStyle: .title3)
-        return label
-    }()
-    
-    private let productPriceLabel: UILabel = {
-        let label = UILabel()
-        label.textColor = .gray
-        label.font = UIFont.preferredFont(forTextStyle: .body)
-        return label
-    }()
-    
-    private let productSalePriceLabel: UILabel = {
-        let label = UILabel()
-        label.textColor = .gray
-        label.font = UIFont.preferredFont(forTextStyle: .body)
-        return label
-    }()
-    
-    private let productStockLabel: UILabel = {
-        let label = UILabel()
-        label.textColor = .gray
-        label.font = UIFont.preferredFont(forTextStyle: .body)
-        return label
-    }()
     
     private lazy var labelStackView: UIStackView = {
         let stackView = UIStackView(arrangedSubviews: [productPriceLabel,
@@ -85,32 +41,15 @@ final class GridCollectionViewCell: UICollectionViewCell {
         return stackView
     }()
     
-    func uploadImage(_ image: UIImage) {
-        productImageView.image = image
-        indicatorView.stopAnimating()
-    }
-    
-    func setupData(with productData: Product) {
-        discountPrice = productData.discountedPrice
+    private func setupUIComponent() {
+        productImageView.contentMode = .scaleAspectFill
         
-        productNameLabel.text = productData.name
-        productPriceLabel.text = String(productData.currencyPrice)
-        productSalePriceLabel.text = String(productData.currencyBargainPrice)
-        productStockLabel.text = productData.stockDescription
+        productNameLabel.textAlignment = .center
+        productNameLabel.font = UIFont.preferredFont(forTextStyle: .title3)
         
-        setupStockLabelText()
-        setupPriceLabel()
-    }
-    
-    override func prepareForReuse() {
-        super.prepareForReuse()
-        clearPriceLabel()
-        
-        productImageView.image = nil
-        productNameLabel.text = nil
-        productPriceLabel.text = nil
-        productSalePriceLabel.text = nil
-        productStockLabel.text = nil
+        productPriceLabel.font = UIFont.preferredFont(forTextStyle: .body)
+        productSalePriceLabel.font = UIFont.preferredFont(forTextStyle: .body)
+        productStockLabel.font = UIFont.preferredFont(forTextStyle: .body)
     }
 }
 
@@ -130,34 +69,7 @@ extension GridCollectionViewCell {
         setupStackViewConstraints()
         setupIndicatorConstraints()
     }
-    
-    private func setupStockLabelText() {
-        if productStockLabel.text == "품절" {
-            productStockLabel.textColor = .systemOrange
-        } else {
-            productStockLabel.textColor = .gray
-        }
-    }
-    
-    private func setupPriceLabel() {
-        if discountPrice == Double.zero {
-            productSalePriceLabel.isHidden = true
-        } else {
-            changePriceLabel()
-        }
-    }
-    
-    private func changePriceLabel() {
-        productPriceLabel.textColor = .red
-        productPriceLabel.applyStrikeThroughStyle()
-    }
-    
-    private func clearPriceLabel() {
-        productSalePriceLabel.isHidden = false
-        productPriceLabel.textColor = .gray
-        productPriceLabel.attributedText = .none
-    }
-    
+
     private func setupStackViewConstraints() {
         NSLayoutConstraint.activate([
             productImageView.widthAnchor.constraint(equalTo: contentView.widthAnchor,

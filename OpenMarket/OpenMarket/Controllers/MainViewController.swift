@@ -91,16 +91,59 @@ final class MainViewController: UIViewController {
 
 // MARK: - DiffableDataSource and Snapshot
 extension MainViewController {
-    func makeDataSource() -> DataSource {
+    private func makeDataSource() -> DataSource {
         let dataSource = DataSource(collectionView: mainView.collectionView) { collectionView, indexPath, product in
-            let cell = collectionView.dequeueReusableCell(withReuseIdentifier: ListCollectionViewCell.reuseIdentifier, for: indexPath) as? ListCollectionViewCell
-            cell?.setupData(with: product)
+            
+            var cell: MainCollectionViewCell
+            
+            switch self.mainView.layoutStatus {
+            case .list:
+                guard let listCell = collectionView.dequeueReusableCell(withReuseIdentifier: ListCollectionViewCell.reuseIdentifier,
+                                                                        for: indexPath) as? ListCollectionViewCell else {
+                    self.showAlert(alertText: NetworkError.data.description,
+                                   alertMessage: "오류가 발생했습니다.",
+                                   completion: nil)
+                    let errorCell = UICollectionViewCell()
+                    return errorCell
+                }
+                cell = listCell
+            case .grid:
+                guard let gridCell = collectionView.dequeueReusableCell(withReuseIdentifier: GridCollectionViewCell.reuseIdentifier,
+                                                                        for: indexPath) as?
+                GridCollectionViewCell else {
+                    self.showAlert(alertText: NetworkError.data.description,
+                                   alertMessage: "오류가 발생했습니다.",
+                                   completion: nil)
+                    let errorCell = UICollectionViewCell()
+                    return errorCell
+                }
+                cell = gridCell
+            }
+            
+            cell.indicatorView.startAnimating()
+            cell.setupData(with: product)
+            
+            let cacheKey = NSString(string: product.thumbnail)
+            if let cachedImage = ImageCacheManager.shared.object(forKey: cacheKey) {
+                cell.uploadImage(cachedImage)
+                return cell
+            }
+            
+            self.networkManager.fetchImage(with: product.thumbnail) { image in
+                DispatchQueue.main.async {
+                    if indexPath == collectionView.indexPath(for: cell) {
+                        ImageCacheManager.shared.setObject(image, forKey: cacheKey)
+                        cell.uploadImage(image)
+                    }
+                }
+            }
+            
             return cell
         }
         return dataSource
     }
     
-    func applySnapshot(animatingDifferences: Bool = true) {
+    private func applySnapshot(animatingDifferences: Bool = true) {
         var snapshot = Snapshot()
         snapshot.appendSections([.main])
         snapshot.appendItems(productData)
@@ -165,75 +208,3 @@ extension MainViewController: UICollectionViewDelegate {
         }
     }
 }
-
-//extension MainViewController: UICollectionViewDataSource {
-//    func collectionView(_ collectionView: UICollectionView,
-//                        cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-//        switch mainView.layoutStatus {
-//        case .list:
-//            guard let cell = collectionView.dequeueReusableCell(
-//                withReuseIdentifier: ListCollectionViewCell.reuseIdentifier,
-//                for: indexPath) as? ListCollectionViewCell
-//            else {
-//                self.showAlert(alertText: NetworkError.data.description,
-//                               alertMessage: "오류가 발생했습니다.",
-//                               completion: nil)
-//                let errorCell = UICollectionViewCell()
-//                return errorCell
-//            }
-//
-//            cell.indicatorView.startAnimating()
-//
-//            let data = self.productData[indexPath.item]
-//            cell.setupData(with: data)
-//
-//            let cacheKey = NSString(string: data.thumbnail)
-//            if let cachedImage = ImageCacheManager.shared.object(forKey: cacheKey) {
-//                cell.uploadImage(cachedImage)
-//                return cell
-//            }
-//
-//            networkManager.fetchImage(with: data.thumbnail) { image in
-//                DispatchQueue.main.async {
-//                    if indexPath == collectionView.indexPath(for: cell) {
-//                        ImageCacheManager.shared.setObject(image, forKey: cacheKey)
-//                        cell.uploadImage(image)
-//                    }
-//                }
-//            }
-//            return cell
-//        case .grid:
-//            guard let cell = collectionView.dequeueReusableCell(
-//                withReuseIdentifier: GridCollectionViewCell.reuseIdentifier,
-//                for: indexPath) as? GridCollectionViewCell
-//            else {
-//                self.showAlert(alertText: NetworkError.data.description,
-//                               alertMessage: "오류가 발생했습니다.",
-//                               completion: nil)
-//                let errorCell = UICollectionViewCell()
-//                return errorCell
-//            }
-//            
-//            cell.indicatorView.startAnimating()
-//
-//            let data = self.productData[indexPath.item]
-//            cell.setupData(with: data)
-//
-//            let cacheKey = NSString(string: data.thumbnail)
-//            if let cachedImage = ImageCacheManager.shared.object(forKey: cacheKey) {
-//                cell.uploadImage(cachedImage)
-//                return cell
-//            }
-//
-//            networkManager.fetchImage(with: data.thumbnail) { image in
-//                DispatchQueue.main.async {
-//                    if indexPath == collectionView.indexPath(for: cell) {
-//                        ImageCacheManager.shared.setObject(image, forKey: cacheKey)
-//                        cell.uploadImage(image)
-//                    }
-//                }
-//            }
-//            return cell
-//        }
-//    }
-//}
