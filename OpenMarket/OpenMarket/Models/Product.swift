@@ -7,7 +7,7 @@
 
 import Foundation
 
-struct Product: Decodable {
+struct Product: Decodable, Hashable {
     let id: Int
     let vendorId: Int
     let name: String
@@ -23,7 +23,7 @@ struct Product: Decodable {
     let images: [ProductImage]?
     let vendors: Venders?
     
-    enum CurrencyUnit: String, Decodable {
+    enum CurrencyUnit: String, Decodable, Hashable {
         case KRW
         case USD
         case JPY
@@ -57,14 +57,14 @@ struct Product: Decodable {
     }
 }
 
-struct ProductImage: Decodable {
+struct ProductImage: Decodable, Hashable {
     let id: Int
     let url: String
     let thumbnailUrl: String
     let issuedAt: Date
 }
 
-struct Venders: Decodable {
+struct Venders: Decodable, Hashable {
     let id: Int
     let name: String
 }
