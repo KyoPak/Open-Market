@@ -301,6 +301,8 @@ OpenMarket
 ### 👟 Refactoring-ModernCollectionView
 - CollectionView Refactoring
     - ✅ 기존 CollectionView의 FlowLayout을 CompositionalLayout으로 변경 (2022.12.14)
+    - ✅ 기존 CollectionView의 DataSource를 DiffableDataSource로 변경 (2022.12.15)
+
 
 - Fix 
     - ✅ 서버에서 가장 마지막 데이터 가져올 때 에러처리 로직 수정 (2022.12.14)
