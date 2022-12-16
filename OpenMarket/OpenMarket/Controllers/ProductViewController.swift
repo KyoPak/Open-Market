@@ -9,8 +9,8 @@ import UIKit
 
 class ProductViewController: UIViewController {
     let networkManager = NetworkManager()
-    var showView: ProductView {
-        return ProductView()
+    var showView: UploadProductView {
+        return UploadProductView()
     }
     var cellImages: [UIImage?] = []
     

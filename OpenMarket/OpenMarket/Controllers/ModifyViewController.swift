@@ -12,7 +12,7 @@ final class ModifyViewController: ProductViewController {
     private var modifyProductView = ModifyProductView()
     private var productData: Product?
     
-    override var showView: ProductView {
+    override var showView: UploadProductView {
         return modifyProductView
     }
     

@@ -1,5 +1,5 @@
 //
-//  ProductView.swift
+//  UploadProductView.swift
 //  OpenMarket
 //
 //  Created by Kyo, LJ on 2022/12/03.
@@ -7,7 +7,7 @@
 
 import UIKit
 
-class ProductView: UIView {
+class UploadProductView: UIView {
     var currency = NewProduct.CurrencyUnit.KRW
     let maxTextCount = 1000
     
@@ -128,7 +128,7 @@ class ProductView: UIView {
 }
 
 // MARK: - KeyBoard Response Notification
-extension ProductView {
+extension UploadProductView {
     func setupNotification() {
         NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillShow), name: UIResponder.keyboardWillShowNotification, object: nil)
         NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillHide), name: UIResponder.keyboardWillHideNotification, object: nil)
@@ -155,7 +155,7 @@ extension ProductView {
 }
 
 // MARK: - UITextFieldDelegate & UITextViewDelegate
-extension ProductView: UITextFieldDelegate, UITextViewDelegate {
+extension UploadProductView: UITextFieldDelegate, UITextViewDelegate {
     func registerTextFieldDelegate() {
         nameTextField.delegate = self
         priceTextField.delegate = self
@@ -197,7 +197,7 @@ extension ProductView: UITextFieldDelegate, UITextViewDelegate {
 }
 
 // MARK: - Constraints
-extension ProductView {
+extension UploadProductView {
     func setupUI() {
         setupView()
         setupConstraints()

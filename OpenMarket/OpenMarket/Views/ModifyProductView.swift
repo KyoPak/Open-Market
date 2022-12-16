@@ -7,7 +7,7 @@
 
 import UIKit
 
-final class ModifyProductView: ProductView {
+final class ModifyProductView: UploadProductView {
     override init(frame: CGRect) {
         super.init(frame: frame)
     }

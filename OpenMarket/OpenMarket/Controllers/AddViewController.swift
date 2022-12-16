@@ -11,10 +11,10 @@ import PhotosUI
 final class AddViewController: ProductViewController {
     private let picker = UIImagePickerController()
     private let maxImageNumber = 5
-    private var addProductView = AddProductView()
+    private var uploadProductView = UploadProductView()
     
-    override var showView: ProductView {
-        return addProductView
+    override var showView: UploadProductView {
+        return uploadProductView
     }
      
     override func viewDidLoad() {
@@ -101,7 +101,7 @@ extension AddViewController: UINavigationControllerDelegate, UIImagePickerContro
             }
         }
         
-        self.addProductView.collectionView.reloadData()
+        self.showView.collectionView.reloadData()
         dismiss(animated: true, completion: nil)
     }
 }
