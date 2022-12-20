@@ -42,41 +42,16 @@ final class DetailProductView: UIView {
     }()
     
     private func registerCell() {
-        collectionView.register(DetailProductCollectionViewCell.self, forCellWithReuseIdentifier: DetailProductCollectionViewCell.reuseIdentifier)
+        collectionView.register(DetailProductCollectionViewCell.self,
+                                forCellWithReuseIdentifier: DetailProductCollectionViewCell.reuseIdentifier)
     }
     
-    private let productNameLabel: UILabel = {
-        let label = UILabel()
-        label.numberOfLines = 0
-        label.font = UIFont.preferredFont(forTextStyle: .title2)
-        return label
-    }()
-    
-    private let productStockLabel: UILabel = {
-        let label = UILabel()
-        label.textColor = .gray
-        return label
-    }()
-    
-    private let productPriceLabel: UILabel = {
-        let label = UILabel()
-        label.font = UIFont.systemFont(ofSize: 15)
-        return label
-    }()
-    
-    private let productSalePriceLabel: UILabel = {
-        let label = UILabel()
-        label.font = UIFont.systemFont(ofSize: 15)
-        return label
-    }()
-    
-    private let pagingLabel: UILabel = {
-        let label = UILabel()
-        
-        label.font = UIFont.systemFont(ofSize: 12)
-        label.translatesAutoresizingMaskIntoConstraints = false
-        return label
-    }()
+    private let productNameLabel = UILabel(font: .preferredFont(forTextStyle: .title2),
+                                           numberOfLines: 1)
+    private let productStockLabel = UILabel(font: .systemFont(ofSize: 15), textColor: .gray)
+    private let productPriceLabel = UILabel(font: .systemFont(ofSize: 15))
+    private let productSalePriceLabel = UILabel(font: .systemFont(ofSize: 15))
+    private let pagingLabel = UILabel(font: .systemFont(ofSize: 12))
     
     private let descriptionTextView: UITextView = {
         let textView = UITextView()

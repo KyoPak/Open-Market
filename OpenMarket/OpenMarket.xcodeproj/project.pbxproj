@@ -18,6 +18,7 @@
 		3C21F1962942C95F0037B7B2 /* DetailProductCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3C21F1952942C95F0037B7B2 /* DetailProductCollectionViewCell.swift */; };
 		3C2A5B7F293B94A500BC6E3D /* UIImage+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3C2A5B7E293B94A500BC6E3D /* UIImage+Extension.swift */; };
 		3C333C202949C24200EE2C9D /* CALayer+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3C333C1F2949C24200EE2C9D /* CALayer+Extension.swift */; };
+		3C3D08852951CFAF007DB5E7 /* UIComponent+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3C3D08842951CFAF007DB5E7 /* UIComponent+Extension.swift */; };
 		3C5518092938B431000FBE60 /* AddProductCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3C5518082938B431000FBE60 /* AddProductCollectionViewCell.swift */; };
 		3C5A48C4294B6A99001AE0A8 /* MainCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3C5A48C3294B6A99001AE0A8 /* MainCollectionViewCell.swift */; };
 		3C84EB282924BE5200E667A3 /* URLSessionProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3C84EB272924BE5200E667A3 /* URLSessionProtocol.swift */; };
@@ -77,6 +78,7 @@
 		3C21F1952942C95F0037B7B2 /* DetailProductCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailProductCollectionViewCell.swift; sourceTree = "<group>"; };
 		3C2A5B7E293B94A500BC6E3D /* UIImage+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIImage+Extension.swift"; sourceTree = "<group>"; };
 		3C333C1F2949C24200EE2C9D /* CALayer+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "CALayer+Extension.swift"; sourceTree = "<group>"; };
+		3C3D08842951CFAF007DB5E7 /* UIComponent+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIComponent+Extension.swift"; sourceTree = "<group>"; };
 		3C5518082938B431000FBE60 /* AddProductCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddProductCollectionViewCell.swift; sourceTree = "<group>"; };
 		3C5A48C3294B6A99001AE0A8 /* MainCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainCollectionViewCell.swift; sourceTree = "<group>"; };
 		3C84EB272924BE5200E667A3 /* URLSessionProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = URLSessionProtocol.swift; sourceTree = "<group>"; };
@@ -166,6 +168,7 @@
 				3C093204292BE7EC00F96865 /* UILabel+Extension.swift */,
 				3C2A5B7E293B94A500BC6E3D /* UIImage+Extension.swift */,
 				3C333C1F2949C24200EE2C9D /* CALayer+Extension.swift */,
+				3C3D08842951CFAF007DB5E7 /* UIComponent+Extension.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -473,6 +476,7 @@
 				3C333C202949C24200EE2C9D /* CALayer+Extension.swift in Sources */,
 				3C093203292B68C800F96865 /* ReuseIdentifierProtocol+Extension.swift in Sources */,
 				C70FB0FB25BEF61C00C9924E /* AppDelegate.swift in Sources */,
+				3C3D08852951CFAF007DB5E7 /* UIComponent+Extension.swift in Sources */,
 				3CB07366293B7DA900881AE6 /* ProductViewController.swift in Sources */,
 				3C2A5B7F293B94A500BC6E3D /* UIImage+Extension.swift in Sources */,
 				C70FB0FD25BEF61C00C9924E /* SceneDelegate.swift in Sources */,

@@ -39,39 +39,20 @@ class UploadProductView: UIView {
         return layout
     }()
     
-    let nameTextField: UITextField = {
-        let textField = UITextField()
-        textField.placeholder = "상품명"
-        textField.borderStyle = .roundedRect
-        textField.keyboardType = UIKeyboardType.default
-        textField.returnKeyType = .done
-        return textField
-    }()
+    let nameTextField = UITextField(placeholder: "상품명",
+                                    borderStyle: .roundedRect)
     
-    let priceTextField: UITextField = {
-        let textField = UITextField()
-        textField.placeholder = "상품가격"
-        textField.borderStyle = .roundedRect
-        textField.returnKeyType = .done
-        textField.keyboardType = UIKeyboardType.numberPad
-        return textField
-    }()
+    let priceTextField = UITextField(placeholder: "상품가격",
+                                     borderStyle: .roundedRect,
+                                     keyboardType: .numberPad)
+
+    let salePriceTextField = UITextField(placeholder: "할인가격",
+                                     borderStyle: .roundedRect,
+                                     keyboardType: .numberPad)
     
-    let salePriceTextField: UITextField = {
-        let textField = UITextField()
-        textField.placeholder = "할인가격"
-        textField.borderStyle = .roundedRect
-        textField.keyboardType = UIKeyboardType.numberPad
-        return textField
-    }()
-    
-    let stockTextField: UITextField = {
-        let textField = UITextField()
-        textField.placeholder = "재고수량"
-        textField.borderStyle = .roundedRect
-        textField.keyboardType = UIKeyboardType.numberPad
-        return textField
-    }()
+    let stockTextField = UITextField(placeholder: "재고수량",
+                                     borderStyle: .roundedRect,
+                                     keyboardType: .numberPad)
     
     let descriptionTextView: UITextView = {
         let textView = UITextView()
