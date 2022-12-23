@@ -24,11 +24,11 @@
 
 ## Ground Rule
 
-[Ground Rule 바로가기](https://github.com/KyoPak/ios-open-market/wiki/GroundRule)
+[Ground Rule 바로가기](https://github.com/KyoPak/Open-Market/wiki/Ground-Rule)
 
 ## Code Convention
 
-[Code Convention 바로가기](https://github.com/KyoPak/ios-open-market/wiki/Code-Convention)
+[Code Convention 바로가기](https://github.com/KyoPak/Open-Market/wiki/Code-Convention)
 
 ## 실행 화면
 
@@ -823,7 +823,7 @@ extension UIViewController {
     
 ## 일일 스크럼
 
-[일일 스크럼 바로가기](https://github.com/KyoPak/ios-open-market/wiki/Scrum)
+[일일 스크럼 바로가기](https://github.com/KyoPak/Open-Market/wiki/Scrum)
 
 ## 참고 링크
 
