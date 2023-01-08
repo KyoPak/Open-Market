@@ -8,9 +8,13 @@
 import UIKit
 
 extension UIViewController {
-    func showAlert(alertText: String, alertMessage: String, completion: (() -> (Void))?) {
-        let alert = UIAlertController(title: alertText, message: alertMessage, preferredStyle: .alert)
-        let confirm = UIAlertAction(title: "확인", style: .default) {  _ in
+    func showAlert(alertText: String, alertMessage: String, completion: (() -> Void)?) {
+        let alert = UIAlertController(
+            title: alertText,
+            message: alertMessage,
+            preferredStyle: .alert
+        )
+        let confirm = UIAlertAction(title: "확인", style: .default) { _ in
             if let completion = completion {
                 completion()
             }

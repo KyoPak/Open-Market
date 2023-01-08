@@ -11,12 +11,12 @@ extension UIImage {
     // resizing using CompressingQuility
     func compressTo(expectedSizeInKb: Int) -> Data? {
         let sizeInBytes = expectedSizeInKb * 1024
-        var needCompress:Bool = true
-        var imgData:Data?
-        var compressingValue:CGFloat = 1.0
+        var needCompress: Bool = true
+        var imgData: Data?
+        var compressingValue: CGFloat = 1.0
 
-        while (needCompress && compressingValue > 0.0) {
-            if let data:Data = self.jpegData(compressionQuality: compressingValue) {
+        while needCompress && compressingValue > 0.0 {
+            if let data: Data = self.jpegData(compressionQuality: compressingValue) {
                 if data.count < sizeInBytes {
                     needCompress = false
                     imgData = data
@@ -26,7 +26,7 @@ extension UIImage {
             }
         }
         if let data = imgData {
-            if (data.count < sizeInBytes) {
+            if data.count < sizeInBytes {
                 return data
             }
         }
@@ -46,7 +46,7 @@ extension UIImage {
 
             let size = CGSize(width: changeWidth, height: changeWidth)
             let render = UIGraphicsImageRenderer(size: size)
-            let renderImage = render.image { context in
+            let renderImage = render.image { _ in
                 self.draw(in: CGRect(origin: .zero, size: size))
             }
             data = renderImage.jpegData(compressionQuality: 1.0)!

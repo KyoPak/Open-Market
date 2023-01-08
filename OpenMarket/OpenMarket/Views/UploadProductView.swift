@@ -68,9 +68,11 @@ class UploadProductView: UIView {
     let currencySegmentedControl: UISegmentedControl = {
         let segmentedControl = UISegmentedControl(items: ["KRW", "USD"])
         segmentedControl.selectedSegmentIndex = 0
-        segmentedControl.addTarget(self,
-                                   action: #selector(segmentedControlValueChanged),
-                                   for: .valueChanged)
+        segmentedControl.addTarget(
+            self,
+            action: #selector(segmentedControlValueChanged),
+            for: .valueChanged
+        )
         segmentedControl.translatesAutoresizingMaskIntoConstraints = false
         return segmentedControl
     }()
@@ -85,7 +87,9 @@ class UploadProductView: UIView {
     }()
     
     lazy var productStackView: UIStackView = {
-        let stackView = UIStackView(arrangedSubviews: [nameTextField, priceStackView, salePriceTextField, stockTextField])
+        let stackView = UIStackView(
+            arrangedSubviews: [nameTextField, priceStackView, salePriceTextField, stockTextField]
+        )
         stackView.axis = .vertical
         stackView.spacing = 10
         stackView.alignment = .fill
@@ -95,8 +99,10 @@ class UploadProductView: UIView {
     }()
     
     func registerCell() {
-        collectionView.register(AddProductCollectionViewCell.self,
-                                forCellWithReuseIdentifier: AddProductCollectionViewCell.reuseIdentifier)
+        collectionView.register(
+            AddProductCollectionViewCell.self,
+            forCellWithReuseIdentifier: AddProductCollectionViewCell.reuseIdentifier
+        )
     }
     
     @objc func segmentedControlValueChanged(sender: UISegmentedControl) {
@@ -111,19 +117,32 @@ class UploadProductView: UIView {
 // MARK: - KeyBoard Response Notification
 extension UploadProductView {
     func setupNotification() {
-        NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillShow), name: UIResponder.keyboardWillShowNotification, object: nil)
-        NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillHide), name: UIResponder.keyboardWillHideNotification, object: nil)
+        NotificationCenter.default.addObserver(
+            self,
+            selector: #selector(keyboardWillShow),
+            name: UIResponder.keyboardWillShowNotification,
+            object: nil
+        )
+        NotificationCenter.default.addObserver(
+            self,
+            selector: #selector(keyboardWillHide),
+            name: UIResponder.keyboardWillHideNotification,
+            object: nil
+        )
     }
     
     @objc func keyboardWillShow(notification: NSNotification) {
         keyboardWillHide()
-        if let keyboardFrame: NSValue = notification.userInfo?[UIResponder.keyboardFrameEndUserInfoKey] as? NSValue, descriptionTextView.isFirstResponder {
-                   let keyboardRectangle = keyboardFrame.cgRectValue
-                   let keyboardHeight = keyboardRectangle.height
+        if let keyboardFrame: NSValue = notification.userInfo?[
+            UIResponder.keyboardFrameEndUserInfoKey
+        ] as? NSValue, descriptionTextView.isFirstResponder {
+            
+            let keyboardRectangle = keyboardFrame.cgRectValue
+            let keyboardHeight = keyboardRectangle.height
             UIView.animate(withDuration: 0.5) {
-                   self.window?.frame.origin.y -= keyboardHeight
-               }
-           }
+                self.window?.frame.origin.y -= keyboardHeight
+            }
+        }
     }
     
     @objc func keyboardWillHide() {
@@ -191,28 +210,39 @@ extension UploadProductView {
     }
     
     func setupConstraints() {
+        let safeArea = self.safeAreaLayoutGuide
         NSLayoutConstraint.activate([
-            collectionView.topAnchor.constraint(equalTo: self.safeAreaLayoutGuide.topAnchor,
-                                                constant: 10),
-            collectionView.leadingAnchor.constraint(equalTo: self.safeAreaLayoutGuide.leadingAnchor,
-                                                    constant: 10),
-            collectionView.trailingAnchor.constraint(equalTo: self.safeAreaLayoutGuide.trailingAnchor,
-                                                     constant: -10),
-            collectionView.heightAnchor.constraint(equalTo: self.safeAreaLayoutGuide.heightAnchor,
-                                                   multiplier: 0.2),
+            collectionView.topAnchor.constraint(equalTo: safeArea.topAnchor, constant: 10),
+            collectionView.leadingAnchor.constraint(equalTo: safeArea.leadingAnchor, constant: 10),
+            collectionView.trailingAnchor.constraint(
+                equalTo: safeArea.trailingAnchor,
+                constant: -10
+            ),
+            collectionView.heightAnchor.constraint(equalTo: safeArea.heightAnchor, multiplier: 0.2),
             
-            productStackView.topAnchor.constraint(equalTo: collectionView.bottomAnchor, constant: 5),
-            productStackView.leadingAnchor.constraint(equalTo: self.safeAreaLayoutGuide.leadingAnchor,
-                                                      constant: 10),
-            productStackView.trailingAnchor.constraint(equalTo: self.safeAreaLayoutGuide.trailingAnchor,
-                                                       constant: -10),
+            productStackView.topAnchor.constraint(
+                equalTo: collectionView.bottomAnchor,
+                constant: 5
+            ),
+            productStackView.leadingAnchor.constraint(
+                equalTo: safeArea.leadingAnchor,
+                constant: 10
+            ),
+            productStackView.trailingAnchor.constraint(
+                equalTo: safeArea.trailingAnchor,
+                constant: -10
+            ),
             
-            descriptionTextView.topAnchor.constraint(equalTo: productStackView.bottomAnchor,
-                                                     constant: 10),
+            descriptionTextView.topAnchor.constraint(
+                equalTo: productStackView.bottomAnchor,
+                constant: 10
+            ),
             descriptionTextView.leadingAnchor.constraint(equalTo: productStackView.leadingAnchor),
             descriptionTextView.trailingAnchor.constraint(equalTo: productStackView.trailingAnchor),
-            descriptionTextView.bottomAnchor.constraint(equalTo: self.safeAreaLayoutGuide.bottomAnchor,
-                                                        constant: -10)
+            descriptionTextView.bottomAnchor.constraint(
+                equalTo: safeArea.bottomAnchor,
+                constant: -10
+            )
         ])
     }
 }

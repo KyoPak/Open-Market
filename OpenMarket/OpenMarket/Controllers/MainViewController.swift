@@ -92,14 +92,18 @@ final class MainViewController: UIViewController {
 // MARK: - DiffableDataSource and Snapshot
 extension MainViewController {
     private func makeDataSource() -> DataSource {
-        let dataSource = DataSource(collectionView: mainView.collectionView) { collectionView, indexPath, product in
+        let dataSource = DataSource(
+            collectionView: mainView.collectionView
+        ) { collectionView, indexPath, product in
             
             var cell: MainCollectionViewCell
             
             switch self.mainView.layoutStatus {
             case .list:
-                guard let listCell = collectionView.dequeueReusableCell(withReuseIdentifier: ListCollectionViewCell.reuseIdentifier,
-                                                                        for: indexPath) as? ListCollectionViewCell else {
+                guard let listCell = collectionView.dequeueReusableCell(
+                    withReuseIdentifier: ListCollectionViewCell.reuseIdentifier,
+                    for: indexPath) as? ListCollectionViewCell
+                else {
                     self.showAlert(alertText: NetworkError.data.description,
                                    alertMessage: "오류가 발생했습니다.",
                                    completion: nil)
@@ -108,9 +112,10 @@ extension MainViewController {
                 }
                 cell = listCell
             case .grid:
-                guard let gridCell = collectionView.dequeueReusableCell(withReuseIdentifier: GridCollectionViewCell.reuseIdentifier,
-                                                                        for: indexPath) as?
-                GridCollectionViewCell else {
+                guard let gridCell = collectionView.dequeueReusableCell(
+                    withReuseIdentifier: GridCollectionViewCell.reuseIdentifier,
+                    for: indexPath) as? GridCollectionViewCell
+                else {
                     self.showAlert(alertText: NetworkError.data.description,
                                    alertMessage: "오류가 발생했습니다.",
                                    completion: nil)
@@ -150,7 +155,6 @@ extension MainViewController {
         dataSource.apply(snapshot, animatingDifferences: animatingDifferences, completion: nil)
     }
 }
-
 
 // MARK: - UI & UIAction
 extension MainViewController {

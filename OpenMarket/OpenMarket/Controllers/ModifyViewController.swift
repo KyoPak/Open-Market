@@ -48,7 +48,10 @@ final class ModifyViewController: ProductViewController {
                                     price: price)
         
         if showView.salePriceTextField.text != nil {
-            guard let salePriceString = showView.salePriceTextField.text else { return Result.failure(.none) }
+            guard let salePriceString = showView.salePriceTextField.text
+            else {
+                return Result.failure(.none)
+            }
             newProduct.discountedPrice = Double(salePriceString)
         }
         if showView.stockTextField.text != nil {
@@ -67,7 +70,10 @@ extension ModifyViewController {
         let result = setupData()
         switch result {
         case .success(let data):
-            guard let patchURL = NetworkRequest.patchData(productID: productData.id).requestURL else { return }
+            guard let patchURL = NetworkRequest.patchData(productID: productData.id).requestURL
+            else {
+                return
+            }
             networkManager.patchData(url: patchURL, updateData: data) { result in
                 switch result {
                 case .success(_):
@@ -103,11 +109,17 @@ extension ModifyViewController {
 
 // MARK: - Extension UICollectionView
 extension ModifyViewController: UICollectionViewDelegate, UICollectionViewDataSource {
-    func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
+    func collectionView(
+        _ collectionView: UICollectionView,
+        numberOfItemsInSection section: Int
+    ) -> Int {
         return cellImages.count < maxImageNumber ? cellImages.count + 1 : maxImageNumber
     }
     
-    func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
+    func collectionView(
+        _ collectionView: UICollectionView,
+        cellForItemAt indexPath: IndexPath
+    ) -> UICollectionViewCell {
         guard let cell = collectionView.dequeueReusableCell(
             withReuseIdentifier: AddProductCollectionViewCell.reuseIdentifier,
             for: indexPath) as? AddProductCollectionViewCell

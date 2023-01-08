@@ -42,12 +42,16 @@ final class DetailProductView: UIView {
     }()
     
     private func registerCell() {
-        collectionView.register(DetailProductCollectionViewCell.self,
-                                forCellWithReuseIdentifier: DetailProductCollectionViewCell.reuseIdentifier)
+        collectionView.register(
+            DetailProductCollectionViewCell.self,
+            forCellWithReuseIdentifier: DetailProductCollectionViewCell.reuseIdentifier
+        )
     }
     
-    private let productNameLabel = UILabel(font: .preferredFont(forTextStyle: .title2),
-                                           numberOfLines: 1)
+    private let productNameLabel = UILabel(
+        font: .preferredFont(forTextStyle: .title2),
+        numberOfLines: 1
+    )
     private let productStockLabel = UILabel(font: .systemFont(ofSize: 15), textColor: .gray)
     private let productPriceLabel = UILabel(font: .systemFont(ofSize: 15))
     private let productSalePriceLabel = UILabel(font: .systemFont(ofSize: 15))
@@ -163,23 +167,39 @@ extension DetailProductView {
     }
     
     private func setupConstraints() {
+        let safeArea = self.safeAreaLayoutGuide
         NSLayoutConstraint.activate([
-            collectionView.topAnchor.constraint(equalTo: self.safeAreaLayoutGuide.topAnchor, constant: 20),
-            collectionView.widthAnchor.constraint(equalTo: self.safeAreaLayoutGuide.widthAnchor, multiplier: 0.9),
-            collectionView.heightAnchor.constraint(equalTo: self.safeAreaLayoutGuide.heightAnchor, multiplier: 0.4),
-            collectionView.centerXAnchor.constraint(equalTo: self.safeAreaLayoutGuide.centerXAnchor),
+            collectionView.topAnchor.constraint(equalTo: safeArea.topAnchor, constant: 20),
+            collectionView.widthAnchor.constraint(equalTo: safeArea.widthAnchor, multiplier: 0.9),
+            collectionView.heightAnchor.constraint(equalTo: safeArea.heightAnchor, multiplier: 0.4),
+            collectionView.centerXAnchor.constraint(equalTo: safeArea.centerXAnchor),
             
             pagingLabel.topAnchor.constraint(equalTo: collectionView.bottomAnchor, constant: 5),
-            pagingLabel.centerXAnchor.constraint(equalTo: self.safeAreaLayoutGuide.centerXAnchor),
+            pagingLabel.centerXAnchor.constraint(equalTo: safeArea.centerXAnchor),
             
             productStackView.topAnchor.constraint(equalTo: pagingLabel.bottomAnchor, constant: 5),
-            productStackView.leadingAnchor.constraint(equalTo: self.safeAreaLayoutGuide.leadingAnchor, constant: 20),
-            productStackView.trailingAnchor.constraint(equalTo: self.safeAreaLayoutGuide.trailingAnchor, constant: -20),
+            productStackView.leadingAnchor.constraint(
+                equalTo: safeArea.leadingAnchor,
+                constant: 20
+            ),
+            productStackView.trailingAnchor.constraint(
+                equalTo: safeArea.trailingAnchor,
+                constant: -20
+            ),
             
-            descriptionTextView.topAnchor.constraint(equalTo: productStackView.bottomAnchor, constant: 10),
-            descriptionTextView.widthAnchor.constraint(equalTo: self.safeAreaLayoutGuide.widthAnchor, multiplier: 0.9),
-            descriptionTextView.bottomAnchor.constraint(equalTo: self.safeAreaLayoutGuide.bottomAnchor, constant: -10),
-            descriptionTextView.centerXAnchor.constraint(equalTo: self.safeAreaLayoutGuide.centerXAnchor)
+            descriptionTextView.topAnchor.constraint(
+                equalTo: productStackView.bottomAnchor,
+                constant: 10
+            ),
+            descriptionTextView.widthAnchor.constraint(
+                equalTo: safeArea.widthAnchor,
+                multiplier: 0.9
+            ),
+            descriptionTextView.bottomAnchor.constraint(
+                equalTo: safeArea.bottomAnchor,
+                constant: -10
+            ),
+            descriptionTextView.centerXAnchor.constraint(equalTo: safeArea.centerXAnchor)
         ])
     }
 }

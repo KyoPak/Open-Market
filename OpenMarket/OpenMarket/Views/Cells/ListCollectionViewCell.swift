@@ -103,7 +103,7 @@ extension ListCollectionViewCell {
             indicatorView.topAnchor.constraint(equalTo: productImageView.topAnchor),
             indicatorView.leadingAnchor.constraint(equalTo: productImageView.leadingAnchor),
             indicatorView.trailingAnchor.constraint(equalTo: productImageView.trailingAnchor),
-            indicatorView.bottomAnchor.constraint(equalTo: productImageView.bottomAnchor),
+            indicatorView.bottomAnchor.constraint(equalTo: productImageView.bottomAnchor)
         ])
     }
 }

@@ -37,7 +37,10 @@ class ProductViewController: UIViewController {
                                     price: price)
         
         if showView.salePriceTextField.text != nil {
-            guard let salePriceString = showView.salePriceTextField.text else { return Result.failure(.none) }
+            guard let salePriceString = showView.salePriceTextField.text
+            else {
+                return Result.failure(.none)
+            }
             newProduct.discountedPrice = Double(salePriceString)
         }
         if showView.stockTextField.text != nil {

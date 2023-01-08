@@ -92,7 +92,7 @@ final class NetworkManager {
     // MARK: - Post NewData
     func postData(to url: URL,
                   newData: (productData: NewProduct, images: [UIImage?]),
-                  completion: @escaping (Result<Bool, NetworkError>) -> Void)  {
+                  completion: @escaping ((Result<Bool, NetworkError>) -> Void)) {
         let encoder = JSONEncoder()
         guard let data = try? encoder.encode(newData.productData) else { return }
         let boundary = generateBoundaryString()
@@ -189,7 +189,7 @@ final class NetworkManager {
         let bodyData = try? JSONSerialization.data(withJSONObject: ["secret": "dk9r294wvfwkgvhn"])
         request.httpBody = bodyData
 
-        session.dataTask(with: request) { data, response, error in
+        session.dataTask(with: request) { data, _, _ in
             guard let data = data else {
                 completion(.failure(.data))
                 return
@@ -207,7 +207,7 @@ final class NetworkManager {
     // MARK: - Delete Item Using URI
     func deleteProduct(to url: URL, completion: @escaping (Result<Bool, NetworkError>) -> Void) {
         fetchDeleteDataURI(to: url) { result in
-            let deleteURL : URL?
+            let deleteURL: URL?
             switch result {
             case .success(let uri):
                 deleteURL = NetworkRequest.deleteData(uri: uri).requestURL

@@ -37,13 +37,12 @@ enum TestData {
     ]
 }
 """.data(using: .utf8)
-    
     static let productDetailData = """
 {
     "id": 32,
     "vendor_id": 15,
     "name": "우유병 텀블러",
-    "description": "하얀 우유병 모양의 텀블러! 집에 놓기만 해도 감성있는 인테리어 상품으로 적격 입니다. 여기에 물을 넣어 먹으면 나도 알프스 소녀? 입구는 음료를 마시기 좋은 크기인 40mm 입니다. 2중 구조로 탄탄합니다! 12시간이 지나도 보온 보냉이 유지 됩니다! 여름에 사용하기에도 겨울에 사용하기에도 너무 좋아요! 수량이 얼마 안 남았어요! 구매를 서두르세요😗",
+    "description":"하얀 우유병 모양의 텀블러! 집에 놓기만 해도 감성있는 인테리어 상품으로 적격 입니다. 여기에 물을 넣어 먹으면 나도 알프스 소녀? 입구는 음료를 마시기 좋은 크기인 40mm 입니다. 2중 구조로 탄탄합니다! 여름에 사용하기에도 겨울에 사용하기에도 너무 좋아요! 구매를 서두르세요😗",
     "thumbnail": "https://s3.ap-northeast-2.amazonaws.com/media.yagom-academy.kr/training-resources/15/20221018/951468784f1a11eda200131c69255928_thumb",
     "currency": "KRW",
     "price": 3500.0,

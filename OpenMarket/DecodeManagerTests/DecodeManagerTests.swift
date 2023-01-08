@@ -10,7 +10,6 @@ import XCTest
 
 class DecodeManagerTests: XCTestCase {
     var sut: DecodeManager<ProductPage>!
-    
     override func setUpWithError() throws {
         try super.setUpWithError()
         sut = DecodeManager()
@@ -30,13 +29,13 @@ class DecodeManagerTests: XCTestCase {
         case .failure(let error):
             XCTFail("Expected to be a success but got a failure with \(error)")
         }
-        
+
         XCTAssertTrue(flag)
     }
-    
+
     func test_데이터가_없는_경우_오류_확인() {
         let data = sut.decodeJson(fileName: "")
-        
+
         switch data {
         case .success(let data):
             XCTFail("Expected to be a failure but got a success with \(data)")
@@ -45,4 +44,3 @@ class DecodeManagerTests: XCTestCase {
         }
     }
 }
-

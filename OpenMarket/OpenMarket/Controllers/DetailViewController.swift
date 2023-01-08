@@ -43,7 +43,10 @@ final class DetailViewController: UIViewController {
 extension DetailViewController {
     private func setupData() {
         guard let productID = productID,
-                let productDetailURL =  NetworkRequest.productDetail(productID: productID).requestURL else { return }
+              let productDetailURL =  NetworkRequest.productDetail(productID: productID).requestURL
+        else {
+            return
+        }
         
         networkManager.fetchData(to: productDetailURL, dataType: Product.self) { result in
             switch result {
@@ -56,9 +59,11 @@ extension DetailViewController {
                 }
             case .failure(let error):
                 DispatchQueue.main.async {
-                    self.showAlert(alertText: error.description,
-                                   alertMessage: "오류가 발생했습니다.",
-                                   completion: nil)
+                    self.showAlert(
+                        alertText: error.description,
+                        alertMessage: "오류가 발생했습니다.",
+                        completion: nil
+                    )
                 }
             }
         }
@@ -71,9 +76,11 @@ extension DetailViewController {
         let appearance = UINavigationBarAppearance()
         navigationController?.navigationBar.standardAppearance = appearance
         navigationController?.navigationBar.scrollEdgeAppearance = appearance
-        let optionBarButton = UIBarButtonItem(barButtonSystemItem: .edit,
-                                              target: self,
-                                              action: #selector(optionButtonTapped))
+        let optionBarButton = UIBarButtonItem(
+            barButtonSystemItem: .edit,
+            target: self,
+            action: #selector(optionButtonTapped)
+        )
         
         self.navigationItem.rightBarButtonItem = optionBarButton
     }
@@ -82,14 +89,20 @@ extension DetailViewController {
         let alert = UIAlertController(title: nil, message: nil, preferredStyle: .actionSheet)
         
         let editAction = UIAlertAction(title: "수정", style: .default) { _ in
-            let modifyViewController = ModifyViewController(data: self.productData,
-                                                            images: self.cellImages)
+            let modifyViewController = ModifyViewController(
+                data: self.productData,
+                images: self.cellImages
+            )
             self.navigationController?.pushViewController(modifyViewController, animated: true)
         }
         
         let deleteAction = UIAlertAction(title: "삭제", style: .default) { _ in
             guard let productID = self.productID,
-                    let productDeleteURL = NetworkRequest.deleteDataURI(productID: productID).requestURL else { return }
+                  let productDeleteURL = NetworkRequest.deleteDataURI(
+                    productID: productID).requestURL
+            else {
+                return
+            }
             
             self.networkManager.deleteProduct(to: productDeleteURL) { result in
                 switch result {
@@ -109,9 +122,11 @@ extension DetailViewController {
                     }
                 case .failure(let error):
                     DispatchQueue.main.async {
-                        self.showAlert(alertText: error.description,
-                                       alertMessage: "해당 상품의 판매자가 맞는지 확인 부탁드립니다.",
-                                       completion: nil)
+                        self.showAlert(
+                            alertText: error.description,
+                            alertMessage: "해당 상품의 판매자가 맞는지 확인 부탁드립니다.",
+                            completion: nil
+                        )
                     }
                 }
             }
@@ -138,10 +153,16 @@ extension DetailViewController: UICollectionViewDelegate {
         }
     }
     
-    func scrollViewWillEndDragging(_ scrollView: UIScrollView,
-                                   withVelocity velocity: CGPoint,
-                                   targetContentOffset: UnsafeMutablePointer<CGPoint>) {
-        guard let layout = self.detailView.collectionView.collectionViewLayout as? UICollectionViewFlowLayout else { return }
+    func scrollViewWillEndDragging(
+        _ scrollView: UIScrollView,
+        withVelocity velocity: CGPoint,
+        targetContentOffset: UnsafeMutablePointer<CGPoint>
+    ) {
+        guard let layout = self.detailView.collectionView.collectionViewLayout
+                as? UICollectionViewFlowLayout
+        else {
+            return
+        }
         let cellWidthIncludingSpacing = layout.itemSize.width + layout.minimumLineSpacing
         let estimatedIndex = scrollView.contentOffset.x / cellWidthIncludingSpacing
         
@@ -159,15 +180,23 @@ extension DetailViewController: UICollectionViewDelegate {
 }
 
 extension DetailViewController: UICollectionViewDataSource {
-    func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
+    func collectionView(
+        _ collectionView: UICollectionView,
+        numberOfItemsInSection section: Int
+    ) -> Int {
         guard let productImagesCount = productData?.images else { return 0}
         detailView.changePagingLabel(num: 1, total: productImagesCount.count)
         return productImagesCount.count
     }
     
-    func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: DetailProductCollectionViewCell.reuseIdentifier,
-                                                            for: indexPath) as? DetailProductCollectionViewCell else {
+    func collectionView(
+        _ collectionView: UICollectionView,
+        cellForItemAt indexPath: IndexPath
+    ) -> UICollectionViewCell {
+        guard let cell = collectionView.dequeueReusableCell(
+            withReuseIdentifier: DetailProductCollectionViewCell.reuseIdentifier,
+            for: indexPath) as? DetailProductCollectionViewCell
+        else {
             let errorCell = UICollectionViewCell()
             return errorCell
         }

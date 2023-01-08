@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		0735D3B376CB3BB635CA8018 /* Pods_OpenMarket.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 49DD8B684BDDE12ADFC28B64 /* Pods_OpenMarket.framework */; };
 		3C0931FE292B655D00F96865 /* ListCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3C0931FD292B655D00F96865 /* ListCollectionViewCell.swift */; };
 		3C093200292B657400F96865 /* GridCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3C0931FF292B657400F96865 /* GridCollectionViewCell.swift */; };
 		3C093203292B68C800F96865 /* ReuseIdentifierProtocol+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3C093202292B68C800F96865 /* ReuseIdentifierProtocol+Extension.swift */; };
@@ -25,6 +26,7 @@
 		3C84EB2A2924BE9000E667A3 /* URLSessionDataTaskProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3C84EB292924BE9000E667A3 /* URLSessionDataTaskProtocol.swift */; };
 		3C84EB2C2924C72500E667A3 /* MockURLSession.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3C84EB2B2924C72500E667A3 /* MockURLSession.swift */; };
 		3C84EB342925190600E667A3 /* NetworkManagerTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3C84EB332925190600E667A3 /* NetworkManagerTest.swift */; };
+		3CA294C1296A829900E85CBF /* .swiftlint.yml in Resources */ = {isa = PBXBuildFile; fileRef = 3CA294C0296A829900E85CBF /* .swiftlint.yml */; };
 		3CA35E152922318D00C47E06 /* Product.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3CA35E142922318D00C47E06 /* Product.swift */; };
 		3CA35E2829236AC000C47E06 /* NetworkManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3CA35E2729236AC000C47E06 /* NetworkManager.swift */; };
 		3CA35E2A2923BC1F00C47E06 /* URLComponents+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3CA35E292923BC1F00C47E06 /* URLComponents+Extension.swift */; };
@@ -67,6 +69,8 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		0A9E86C5549029B3D0C9B13E /* Pods-OpenMarket.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-OpenMarket.debug.xcconfig"; path = "Target Support Files/Pods-OpenMarket/Pods-OpenMarket.debug.xcconfig"; sourceTree = "<group>"; };
+		3541CDE4D849F2A7D76C226D /* Pods-OpenMarket.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-OpenMarket.release.xcconfig"; path = "Target Support Files/Pods-OpenMarket/Pods-OpenMarket.release.xcconfig"; sourceTree = "<group>"; };
 		3C0931FD292B655D00F96865 /* ListCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListCollectionViewCell.swift; sourceTree = "<group>"; };
 		3C0931FF292B657400F96865 /* GridCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GridCollectionViewCell.swift; sourceTree = "<group>"; };
 		3C093202292B68C800F96865 /* ReuseIdentifierProtocol+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "ReuseIdentifierProtocol+Extension.swift"; sourceTree = "<group>"; };
@@ -87,6 +91,7 @@
 		3C84EB312925190600E667A3 /* NetworkManagerTest.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = NetworkManagerTest.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		3C84EB332925190600E667A3 /* NetworkManagerTest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkManagerTest.swift; sourceTree = "<group>"; };
 		3C84EB3A29252FF100E667A3 /* TestData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TestData.swift; sourceTree = "<group>"; };
+		3CA294C0296A829900E85CBF /* .swiftlint.yml */ = {isa = PBXFileReference; lastKnownFileType = text.yaml; path = .swiftlint.yml; sourceTree = "<group>"; };
 		3CA35E142922318D00C47E06 /* Product.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Product.swift; sourceTree = "<group>"; };
 		3CA35E2729236AC000C47E06 /* NetworkManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkManager.swift; sourceTree = "<group>"; };
 		3CA35E292923BC1F00C47E06 /* URLComponents+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "URLComponents+Extension.swift"; sourceTree = "<group>"; };
@@ -95,6 +100,7 @@
 		3CB07365293B7DA900881AE6 /* ProductViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProductViewController.swift; sourceTree = "<group>"; };
 		3CB07367293B87B900881AE6 /* UploadProductView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UploadProductView.swift; sourceTree = "<group>"; };
 		3CB07369293B8CCC00881AE6 /* ModifyViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ModifyViewController.swift; sourceTree = "<group>"; };
+		49DD8B684BDDE12ADFC28B64 /* Pods_OpenMarket.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_OpenMarket.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		9058BE7E2938C61C00EDDC66 /* NewProduct.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewProduct.swift; sourceTree = "<group>"; };
 		90D3319829223430001C2B46 /* DecodeManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DecodeManager.swift; sourceTree = "<group>"; };
 		90D3319B29223667001C2B46 /* Error.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Error.swift; sourceTree = "<group>"; };
@@ -132,6 +138,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				0735D3B376CB3BB635CA8018 /* Pods_OpenMarket.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -262,6 +269,15 @@
 			path = Views;
 			sourceTree = "<group>";
 		};
+		9CA2D74E473C50CAB127681A /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				0A9E86C5549029B3D0C9B13E /* Pods-OpenMarket.debug.xcconfig */,
+				3541CDE4D849F2A7D76C226D /* Pods-OpenMarket.release.xcconfig */,
+			);
+			path = Pods;
+			sourceTree = "<group>";
+		};
 		C70FB0EE25BEF61C00C9924E = {
 			isa = PBXGroup;
 			children = (
@@ -269,6 +285,8 @@
 				90D331A429226E98001C2B46 /* DecodeManagerTests */,
 				3C84EB322925190600E667A3 /* NetworkManagerTest */,
 				C70FB0F825BEF61C00C9924E /* Products */,
+				9CA2D74E473C50CAB127681A /* Pods */,
+				DD168E8CC092CDBAB6709DE2 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -285,6 +303,7 @@
 		C70FB0F925BEF61C00C9924E /* OpenMarket */ = {
 			isa = PBXGroup;
 			children = (
+				3CA294C0296A829900E85CBF /* .swiftlint.yml */,
 				C70FB0FA25BEF61C00C9924E /* AppDelegate.swift */,
 				C70FB0FC25BEF61C00C9924E /* SceneDelegate.swift */,
 				90D3319A29223647001C2B46 /* Common */,
@@ -298,6 +317,14 @@
 				C70FB10825BEF61D00C9924E /* Info.plist */,
 			);
 			path = OpenMarket;
+			sourceTree = "<group>";
+		};
+		DD168E8CC092CDBAB6709DE2 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				49DD8B684BDDE12ADFC28B64 /* Pods_OpenMarket.framework */,
+			);
+			name = Frameworks;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -343,9 +370,11 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = C70FB10B25BEF61D00C9924E /* Build configuration list for PBXNativeTarget "OpenMarket" */;
 			buildPhases = (
+				1DEEC49368B80A26F6AC8A82 /* [CP] Check Pods Manifest.lock */,
 				C70FB0F325BEF61C00C9924E /* Sources */,
 				C70FB0F425BEF61C00C9924E /* Frameworks */,
 				C70FB0F525BEF61C00C9924E /* Resources */,
+				3CA294C2296A837F00E85CBF /* ShellScript */,
 			);
 			buildRules = (
 			);
@@ -417,12 +446,55 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				3CA294C1296A829900E85CBF /* .swiftlint.yml in Resources */,
 				C70FB10725BEF61D00C9924E /* LaunchScreen.storyboard in Resources */,
 				C70FB10425BEF61D00C9924E /* Assets.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		1DEEC49368B80A26F6AC8A82 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-OpenMarket-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+		3CA294C2296A837F00E85CBF /* ShellScript */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+			);
+			outputFileListPaths = (
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/SwiftLint/swiftlint\"\n";
+		};
+/* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
 		3C84EB2D2925190600E667A3 /* Sources */ = {
@@ -705,6 +777,7 @@
 		};
 		C70FB10C25BEF61D00C9924E /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 0A9E86C5549029B3D0C9B13E /* Pods-OpenMarket.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
@@ -724,6 +797,7 @@
 		};
 		C70FB10D25BEF61D00C9924E /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 3541CDE4D849F2A7D76C226D /* Pods-OpenMarket.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;

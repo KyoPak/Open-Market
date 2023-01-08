@@ -15,7 +15,9 @@ enum CollectionStatus: Int {
 final class MainView: UIView {
     var layoutStatus: CollectionStatus = .list {
         didSet {
-            collectionView.collectionViewLayout = changeCompositionalLayout(layoutStatus: layoutStatus)
+            collectionView.collectionViewLayout = changeCompositionalLayout(
+                layoutStatus: layoutStatus
+            )
             scrollViewTop()
             collectionView.reloadData()
         }
@@ -48,13 +50,17 @@ final class MainView: UIView {
     }()
     
     lazy var collectionView: UICollectionView = {
-        let collectionView = UICollectionView(frame: .zero,
-                                              collectionViewLayout: changeCompositionalLayout(layoutStatus: .list))
+        let collectionView = UICollectionView(
+            frame: .zero,
+            collectionViewLayout: changeCompositionalLayout(layoutStatus: .list)
+        )
         collectionView.translatesAutoresizingMaskIntoConstraints = false
         return collectionView
     }()
     
-    private func changeCompositionalLayout(layoutStatus: CollectionStatus) -> UICollectionViewLayout {
+    private func changeCompositionalLayout(
+        layoutStatus: CollectionStatus
+    ) -> UICollectionViewLayout {
         let itemSize = NSCollectionLayoutSize(widthDimension: .fractionalWidth(1.0),
                                               heightDimension: .fractionalHeight(1.0))
         let item = NSCollectionLayoutItem(layoutSize: itemSize)
@@ -93,7 +99,7 @@ final class MainView: UIView {
                                 forCellWithReuseIdentifier: GridCollectionViewCell.reuseIdentifier)
     }
     
-    private func scrollViewTop(){
+    private func scrollViewTop() {
         self.layoutIfNeeded()
         collectionView.setContentOffset(CGPoint(x: 0, y: 0), animated: false)
     }
@@ -107,13 +113,16 @@ extension MainView {
     }
     
     private func setupConstraints() {
+        let safeArea = self.safeAreaLayoutGuide
         NSLayoutConstraint.activate([
-            collectionView.topAnchor.constraint(equalTo: self.safeAreaLayoutGuide.topAnchor),
-            collectionView.bottomAnchor.constraint(equalTo: self.safeAreaLayoutGuide.bottomAnchor),
-            collectionView.leadingAnchor.constraint(equalTo: self.safeAreaLayoutGuide.leadingAnchor,
+            collectionView.topAnchor.constraint(equalTo: safeArea.topAnchor),
+            collectionView.bottomAnchor.constraint(equalTo: safeArea.bottomAnchor),
+            collectionView.leadingAnchor.constraint(equalTo: safeArea.leadingAnchor,
                                                     constant: 10),
-            collectionView.trailingAnchor.constraint(equalTo: self.safeAreaLayoutGuide.trailingAnchor,
-                                                     constant: -10)
+            collectionView.trailingAnchor.constraint(
+                equalTo: safeArea.trailingAnchor,
+                constant: -10
+            )
         ])
     }
 }

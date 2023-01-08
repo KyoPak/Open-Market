@@ -90,9 +90,9 @@ extension AddViewController: ImageCollectionViewCellDelegate {
 
 // MARK: - Extension UIImagePickerController
 extension AddViewController: UINavigationControllerDelegate, UIImagePickerControllerDelegate {
-    func imagePickerController(_ picker: UIImagePickerController,
-                               didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey : Any]) {
-        
+    func imagePickerController(
+        _ picker: UIImagePickerController,
+        didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey: Any]) {
         if let image = info[.editedImage] as? UIImage {
             cellImages.append(image)
         } else {
@@ -108,7 +108,10 @@ extension AddViewController: UINavigationControllerDelegate, UIImagePickerContro
 
 // MARK: - Extension UICollectionView
 extension AddViewController: UICollectionViewDelegate, UICollectionViewDataSource {
-    func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
+    func collectionView(
+        _ collectionView: UICollectionView,
+        numberOfItemsInSection section: Int
+    ) -> Int {
         return cellImages.count < maxImageNumber ? cellImages.count + 1 : maxImageNumber
     }
     
