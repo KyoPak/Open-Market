@@ -308,6 +308,8 @@ OpenMarket
     - ✅ 서버에서 가장 마지막 데이터 가져올 때 에러처리 로직 수정 (2022.12.14)
     - ✅ MainViewController의 비동기 메서드 내부에서 오류 발생 시 Alert을 main Thread에서 띄우도록 수정 (2022.12.14)
 
+- chore 
+    - ✅ swiftlint 적용하여 코드컨벤션 정리 (2023.01.08)
 
 
 
