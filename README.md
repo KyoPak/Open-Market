@@ -7,10 +7,10 @@
 1. [팀 소개](#팀-소개)
 2. [GroundRule](#ground-rule)
 3. [Code Convention](#code-convention)
-4. [실행 화면](#실행-화면)
-5. [Diagram](#diagram)
-6. [폴더 구조](#폴더-구조)
-7. [타임라인](#타임라인)
+4. [타임라인](#타임라인)
+5. [실행 화면](#실행-화면)
+6. [Diagram](#diagram)
+7. [폴더 구조](#폴더-구조)
 8. [기술적 도전](#기술적-도전)
 9. [트러블 슈팅 및 고민](#트러블-슈팅-및-고민)
 10. [일일 스크럼](#일일-스크럼)
@@ -30,125 +30,6 @@
 
 [Code Convention 바로가기](https://github.com/KyoPak/Open-Market/wiki/Code-Convention)
 
-## 실행 화면
-
-### ▶️ Step-1 실행화면 - 네트워크 구현
-
-<details>
-<summary> 
-펼쳐보기
-</summary>
-
-|**HealthCheck**|<img width = 100, src = "https://i.imgur.com/gYPRWVK.png">|
-|:---:|:---|
-|**ProductList**|<img width = 7000, src = "https://i.imgur.com/OCWXSIH.png">|
-|**ProductDetail**|<img width = 700, src ="https://i.imgur.com/POfRE6k.png">|
-
-</details>
-
-
-### ▶️ Step-2 실행화면 - CollectionView
-
-<details>
-<summary> 
-펼쳐보기
-</summary>
-
-|**기본실행**|**Indicator적용**|**Cache적용**|
-|:--:|:--:|:--:|
-|<img src="https://i.imgur.com/sYKmYBJ.gif" width=220>|<img src="https://i.imgur.com/h3xn3i7.gif" width=220>|<img src="https://i.imgur.com/GDTosnM.gif" width=220>|
-
-</details>
-
-### ▶️ Step-3 실행화면
-
-<details>
-<summary> 
-펼쳐보기
-</summary>
-
-|**기본실행**|**상품등록**|**이미지등록 최대5장**|**키보드타입,콘텐츠영역보장**|
-|:--:|:--:|:--:|:--:|
-|<img src="https://i.imgur.com/xZgF7Uv.gif" width=220> |<img src="https://i.imgur.com/AJZRF6r.gif" width=220> |<img src="https://i.imgur.com/KiDbcAU.gif" width=210>|<img src="https://i.imgur.com/6JpDuqh.gif" width=190>|
-    
-    
-</details>
-
-### ▶️ Step-4 실행화면
-
-    
-|**기본실행**|**상품수정**|**상품삭제**|**Alert**|
-|:--:|:--:|:--:|:--:|
-|<img src="https://i.imgur.com/EcLhpH3.gif" width=220> |<img src="https://i.imgur.com/RiBuMAG.gif" width=220>| <img src="https://i.imgur.com/VTPXA5m.gif" width=215> | <img src="https://i.imgur.com/Zzwf0xf.gif" width=225> |
-
-
-
-## Diagram
-
-### Class Diagram
-대략적으로 나타낸 Class Diagram입니다.
-![](https://i.imgur.com/L9FwSJ6.jpg)
- 
-## 폴더 구조
-
-```
-OpenMarket
-├── DecodeManagerTests
-│   └── DecodeManagerTests.swift
-├── NetworkManagerTest
-│   ├── NetworkManagerTest.swift
-│   └── TestData.swift
-├── OpenMarket
-│   ├── AppDelegate.swift
-│   ├── SceneDelegate.swift
-│   ├── Info.plist
-│   ├── Base.lproj
-│   │   └── LaunchScreen.storyboard
-│   ├── Resources
-│   │   └── Assets.xcassets
-│   ├── Common
-│   │   ├── Error.swift
-│   │   └── Protocol
-│   │       └── ReuseIdentifierProtocol+Extension.swift
-│   ├── Controllers
-│   │   ├── ImageCacheManager.swift
-│   │   ├── AddViewController.swift
-│   │   ├── DetailViewController.swift
-│   │   ├── MainViewController.swift
-│   │   ├── ModifyViewController.swift
-│   │   └── ProductViewController.swift
-│   ├── Extensions
-│   │   ├── Formatter+Extension.swift
-│   │   ├── UIImage+Extension.swift
-│   │   ├── UILabel+Extension.swift
-│   │   ├── UIViewController+Extension.swift
-│   │   └── URLComponents+Extension.swift
-│   ├── Models
-│   │   ├── DecodeManager.swift
-│   │   ├── NewProduct.swift
-│   │   ├── Product.swift
-│   │   └── ProductPage.swift
-│   ├── Network
-│   │   ├── MockURLSession
-│   │   │   └── MockURLSession.swift
-│   │   ├── NetworkManager.swift
-│   │   ├── NetworkRequest.swift
-│   │   └── Protocols
-│   │       ├── URLSessionDataTaskProtocol.swift
-│   │       └── URLSessionProtocol.swift
-│   └── Views
-│       ├── Cells
-│       │   ├── AddProductCollectionViewCell.swift
-│       │   ├── DetailProductCollectionViewCell.swift
-│       │   ├── GridCollectionViewCell.swift
-│       │   └── ListCollectionViewCell.swift
-│       ├── MainView.swift
-│       ├── DetailProductView.swift
-│       ├── ProductView.swift
-│       ├── AddProductView.swift
-│       └── ModifyProductView.swift
-└── README.md                
-```
 
 ##  타임라인
 ### 👟 Step 1
@@ -313,6 +194,125 @@ OpenMarket
 
 
 
+## 실행 화면
+
+### ▶️ Step-1 실행화면 - 네트워크 구현
+
+<details>
+<summary> 
+펼쳐보기
+</summary>
+
+|**HealthCheck**|<img width = 100, src = "https://i.imgur.com/gYPRWVK.png">|
+|:---:|:---|
+|**ProductList**|<img width = 7000, src = "https://i.imgur.com/OCWXSIH.png">|
+|**ProductDetail**|<img width = 700, src ="https://i.imgur.com/POfRE6k.png">|
+
+</details>
+
+
+### ▶️ Step-2 실행화면 - CollectionView
+
+<details>
+<summary> 
+펼쳐보기
+</summary>
+
+|**기본실행**|**Indicator적용**|**Cache적용**|
+|:--:|:--:|:--:|
+|<img src="https://i.imgur.com/sYKmYBJ.gif" width=220>|<img src="https://i.imgur.com/h3xn3i7.gif" width=220>|<img src="https://i.imgur.com/GDTosnM.gif" width=220>|
+
+</details>
+
+### ▶️ Step-3 실행화면
+
+<details>
+<summary> 
+펼쳐보기
+</summary>
+
+|**기본실행**|**상품등록**|**이미지등록 최대5장**|**키보드타입,콘텐츠영역보장**|
+|:--:|:--:|:--:|:--:|
+|<img src="https://i.imgur.com/xZgF7Uv.gif" width=220> |<img src="https://i.imgur.com/AJZRF6r.gif" width=220> |<img src="https://i.imgur.com/KiDbcAU.gif" width=210>|<img src="https://i.imgur.com/6JpDuqh.gif" width=190>|
+    
+    
+</details>
+
+### ▶️ Step-4 실행화면
+
+    
+|**기본실행**|**상품수정**|**상품삭제**|**Alert**|
+|:--:|:--:|:--:|:--:|
+|<img src="https://i.imgur.com/EcLhpH3.gif" width=220> |<img src="https://i.imgur.com/RiBuMAG.gif" width=220>| <img src="https://i.imgur.com/VTPXA5m.gif" width=215> | <img src="https://i.imgur.com/Zzwf0xf.gif" width=225> |
+
+
+
+## Diagram
+
+### Class Diagram
+대략적으로 나타낸 Class Diagram입니다.
+![](https://i.imgur.com/L9FwSJ6.jpg)
+ 
+## 폴더 구조
+
+```
+OpenMarket
+├── DecodeManagerTests
+│   └── DecodeManagerTests.swift
+├── NetworkManagerTest
+│   ├── NetworkManagerTest.swift
+│   └── TestData.swift
+├── OpenMarket
+│   ├── AppDelegate.swift
+│   ├── SceneDelegate.swift
+│   ├── Info.plist
+│   ├── Base.lproj
+│   │   └── LaunchScreen.storyboard
+│   ├── Resources
+│   │   └── Assets.xcassets
+│   ├── Common
+│   │   ├── Error.swift
+│   │   └── Protocol
+│   │       └── ReuseIdentifierProtocol+Extension.swift
+│   ├── Controllers
+│   │   ├── ImageCacheManager.swift
+│   │   ├── AddViewController.swift
+│   │   ├── DetailViewController.swift
+│   │   ├── MainViewController.swift
+│   │   ├── ModifyViewController.swift
+│   │   └── ProductViewController.swift
+│   ├── Extensions
+│   │   ├── Formatter+Extension.swift
+│   │   ├── UIImage+Extension.swift
+│   │   ├── UILabel+Extension.swift
+│   │   ├── UIViewController+Extension.swift
+│   │   └── URLComponents+Extension.swift
+│   ├── Models
+│   │   ├── DecodeManager.swift
+│   │   ├── NewProduct.swift
+│   │   ├── Product.swift
+│   │   └── ProductPage.swift
+│   ├── Network
+│   │   ├── MockURLSession
+│   │   │   └── MockURLSession.swift
+│   │   ├── NetworkManager.swift
+│   │   ├── NetworkRequest.swift
+│   │   └── Protocols
+│   │       ├── URLSessionDataTaskProtocol.swift
+│   │       └── URLSessionProtocol.swift
+│   └── Views
+│       ├── Cells
+│       │   ├── AddProductCollectionViewCell.swift
+│       │   ├── DetailProductCollectionViewCell.swift
+│       │   ├── GridCollectionViewCell.swift
+│       │   └── ListCollectionViewCell.swift
+│       ├── MainView.swift
+│       ├── DetailProductView.swift
+│       ├── ProductView.swift
+│       ├── AddProductView.swift
+│       └── ModifyProductView.swift
+└── README.md                
+```
 
 ## 기술적 도전
 ### ⚙️ Network
