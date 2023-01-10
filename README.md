@@ -32,7 +32,12 @@
 
 
 ##  타임라인
-### 👟 Step 1
+### 👟 Step 1 - Team
+
+<details>
+<summary> 
+펼쳐보기
+</summary>
 
 - Model 구현
     - ✅ 파싱한 JSON 데이터와 매핑할 모델 설계
@@ -78,11 +83,17 @@
     - makeMockSenderSession
         - 이 타입 메서드는 `MockURLSession`의 Mock응답을 만드는 메서드입니다. 실제 네트워크에 요청을 해서 응답값을 받아오는 목적이 아니기 때문에 이 메서드를 통해 Mock응답을 만들었습니다.
 
- 
+ </details>
 </details>
 
 
-### 👟 Step 2
+### 👟 Step 2 - Team
+
+<details>
+<summary> 
+펼쳐보기
+</summary>
+
 - CollectionView
     - ✅ Collection View의 활용
     - ✅ Custom Cell 구현 (List, Grid)
@@ -123,8 +134,17 @@
 
     
 </details>
+</details>
 
-### 👟 Step 3
+
+### 👟 Step 3 - Team
+
+
+<details>
+<summary> 
+펼쳐보기
+</summary>
+
 - CollectionView
     - ✅ Collection View의 활용
     - ✅ Cell 내부 Button Action Delegate 처리 
@@ -170,7 +190,9 @@
 
  </details>
  
-### 👟 Step 4
+ </details>
+ 
+### 👟 Step 4 - Team
 - Alert
     - ✅ 상황에 적합한 Alert 활용
     - ✅ UIAlertController 액션의 completion handler 활용
@@ -179,7 +201,7 @@
 - Network
     - ✅ NetworkManager UPDATE, DELETE Method 구현 및 적용
 
-### 👟 Refactoring-ModernCollectionView
+### 👟 Refactoring-ModernCollectionView - Personal
 - CollectionView Refactoring
     - ✅ 기존 CollectionView의 FlowLayout을 CompositionalLayout으로 변경 (2022.12.14)
     - ✅ 기존 CollectionView의 DataSource를 DiffableDataSource로 변경 (2022.12.15)
